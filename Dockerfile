@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y \
     postgresql-client \
     libpq5 \
     curl \
+    dos2unix \
     && rm -rf /var/lib/apt/lists/*
 
 # Crear usuario no-root para seguridad
@@ -48,8 +49,8 @@ COPY --chown=appuser:appuser . .
 # Crear directorio para uploads
 RUN mkdir -p /app/uploads && chown -R appuser:appuser /app/uploads
 
-# Dar permisos de ejecución al script de inicio
-RUN chmod +x /app/start.sh
+# Convertir terminaciones de linea CRLF a LF y dar permisos de ejecucion
+RUN dos2unix /app/start.sh && chmod +x /app/start.sh
 
 # Cambiar a usuario no-root
 USER appuser

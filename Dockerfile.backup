@@ -1,8 +1,8 @@
 # Dockerfile para el servicio de backup
 FROM postgres:15-alpine
 
-# Instalar cron y herramientas
-RUN apk add --no-cache bash dcron
+# Instalar cron, herramientas y dos2unix para convertir line endings
+RUN apk add --no-cache bash dcron dos2unix
 
 # Crear directorio de backups
 RUN mkdir -p /backups
@@ -10,10 +10,13 @@ RUN mkdir -p /backups
 # Copiar scripts
 COPY scripts/backup.sh /usr/local/bin/backup.sh
 COPY scripts/restore.sh /usr/local/bin/restore.sh
-RUN chmod +x /usr/local/bin/backup.sh /usr/local/bin/restore.sh
+
+# Convertir CRLF a LF y dar permisos
+RUN dos2unix /usr/local/bin/backup.sh /usr/local/bin/restore.sh && \
+    chmod +x /usr/local/bin/backup.sh /usr/local/bin/restore.sh
 
 # Script de entrada que configura cron dinámicamente
 COPY scripts/backup-entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN dos2unix /entrypoint.sh && chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

@@ -69,6 +69,9 @@ services:
       # Frontend URL (para enlaces en correos)
       FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
 
+      # API Base URL (para URLs de archivos en almacenamiento local)
+      API_BASE_URL: ${API_BASE_URL:-http://localhost:5002}
+
       # Cloudflare R2 Storage
       R2_ENABLED: ${R2_ENABLED:-False}
       R2_ACCOUNT_ID: ${R2_ACCOUNT_ID:-}

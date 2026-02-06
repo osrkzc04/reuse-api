@@ -65,6 +65,9 @@ class StorageService:
         self.upload_dir = Path(settings.UPLOAD_DIR)
         self.max_file_size = settings.MAX_FILE_SIZE
 
+        # URL base de la API (para almacenamiento local)
+        self.api_base_url = settings.API_BASE_URL.rstrip("/")
+
         # Configuración R2
         self.r2_account_id = settings.R2_ACCOUNT_ID
         self.r2_access_key = settings.R2_ACCESS_KEY_ID
@@ -238,7 +241,8 @@ class StorageService:
             file_path = folder_path / filename
             file_path.write_bytes(content)
 
-            url = f"/uploads/{object_key}"
+            # Generar URL completa con la base de la API
+            url = f"{self.api_base_url}/uploads/{object_key}"
             logger.info(f"Archivo guardado localmente: {file_path}")
 
             return {
@@ -327,7 +331,7 @@ class StorageService:
         if self.r2_enabled:
             return f"{self.r2_public_url}/{object_key}"
         else:
-            return f"/uploads/{object_key}"
+            return f"{self.api_base_url}/uploads/{object_key}"
 
     def extract_object_key_from_url(self, url: str) -> Optional[str]:
         """
@@ -346,7 +350,11 @@ class StorageService:
         if self.r2_public_url and url.startswith(self.r2_public_url):
             return url.replace(f"{self.r2_public_url}/", "")
 
-        # URL local
+        # URL local con API base (nuevo formato: http://localhost:5002/uploads/...)
+        if self.api_base_url and url.startswith(f"{self.api_base_url}/uploads/"):
+            return url.replace(f"{self.api_base_url}/uploads/", "")
+
+        # URL local relativa (formato antiguo: /uploads/...)
         if url.startswith("/uploads/"):
             return url.replace("/uploads/", "")
 

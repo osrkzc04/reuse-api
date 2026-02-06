@@ -46,6 +46,10 @@ class Settings(BaseSettings):
     # Cambiar según el entorno: desarrollo, producción o cambio de dominio
     FRONTEND_URL: str = "http://localhost:3000"  # Desarrollo local por defecto
 
+    # API Base URL (para generar URLs de archivos en almacenamiento local)
+    # Cambiar según el entorno: desarrollo, producción o cambio de dominio
+    API_BASE_URL: str = "http://localhost:5002"  # URL base del backend
+
     # Cloudflare R2 Storage
     R2_ENABLED: bool = False  # False = almacenamiento local, True = Cloudflare R2
     R2_ACCOUNT_ID: str = ""
