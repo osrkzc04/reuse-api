@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <style>
+        /* Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /* Container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Header */
+        .email-header {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .email-header h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .email-header .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        /* Body */
+        .email-body {
+            padding: 40px 30px;
+            color: #333333;
+        }
+
+        .email-body h2 {
+            color: #2E7D32;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .email-body p {
+            margin: 15px 0;
+            color: #555555;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #757575;
+        }
+
+        /* Code Box */
+        .code-box {
+            background-color: #f5f5f5;
+            border: 2px dashed #2E7D32;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .code-box .code {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2E7D32;
+            letter-spacing: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-box .label {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #E8F5E9;
+            border-left: 4px solid #2E7D32;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #1B5E20;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background-color: #FFF3E0;
+            border-left: 4px solid #FF9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: #E65100;
+        }
+
+        /* Footer */
+        .email-footer {
+            background-color: #f8f8f8;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #eeeeee;
+        }
+
+        .email-footer p {
+            color: #888888;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+        .email-footer a {
+            color: #2E7D32;
+            text-decoration: none;
+        }
+
+        .social-links {
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        /* Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-body {
+                padding: 25px 20px;
+            }
+
+            .email-header h1 {
+                font-size: 24px;
+            }
+
+            .code-box .code {
+                font-size: 24px;
+            }
+
+            .btn {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f4; padding: 20px 0;">
+        <tr>
+            <td align="center">
+                <div class="email-container">
+                    <!-- Header -->
+                    <div class="email-header">
+                        <div class="logo">&#9851;</div>
+                        <h1>{{ app_name | default('Reuse PUCE') }}</h1>
+                        <p class="subtitle">Sistema de Intercambio Sostenible</p>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="email-body">
+                        {% block content %}{% endblock %}
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="email-footer">
+                        <p><strong>Reuse</strong> - Sistema de Intercambio Sostenible</p>
+                        <p>Pontificia Universidad Catolica del Ecuador</p>
+                        <p style="margin-top: 15px;">
+                            <a href="https://reuse.puce.edu.ec">Visitar Reuse</a> |
+                            <a href="https://reuse.puce.edu.ec/ayuda">Ayuda</a>
+                        </p>
+                        <p style="color: #aaaaaa; font-size: 11px; margin-top: 20px;">
+                            Este correo fue enviado automaticamente. Por favor no responda a este mensaje.
+                        </p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

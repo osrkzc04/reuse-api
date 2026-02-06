@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Verifica tu cuenta - Reuse PUCE</title>
+    <!--[if mso]>
+    <style type="text/css">
+        body, table, td {font-family: Arial, Helvetica, sans-serif !important;}
+    </style>
+    <![endif]-->
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #F8FAFC;">
+
+    <!-- Contenedor Principal -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #F8FAFC; padding: 40px 20px;">
+        <tr>
+            <td align="center">
+
+                <!-- Card del Email -->
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; background-color: #FFFFFF; border-radius: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); overflow: hidden;">
+
+                    <!-- Header con Logo y Verde -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #0F7C3E 0%, #0B5E2F 100%); padding: 40px 40px 30px 40px; text-align: center;">
+                            <!-- Logo / Icono -->
+                            <div style="width: 80px; height: 80px; margin: 0 auto 20px; background-color: rgba(255, 255, 255, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 16px auto;">
+                                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+
+                            <!-- Título Header -->
+                            <h1 style="margin: 0; color: #FFFFFF; font-size: 28px; font-weight: 700; line-height: 1.3;">
+                                Reuse
+                            </h1>
+                            <p style="margin: 8px 0 0 0; color: rgba(255, 255, 255, 0.9); font-size: 14px; font-weight: 500;">
+                                Sistema de Intercambio Sostenible PUCE
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Contenido Principal -->
+                    <tr>
+                        <td style="padding: 48px 40px;">
+
+                            <!-- Saludo -->
+                            <h2 style="margin: 0 0 16px 0; color: #0F172A; font-size: 24px; font-weight: 700; line-height: 1.3;">
+                                ¡Hola, {{ user_name }}! 👋
+                            </h2>
+
+                            <!-- Mensaje Principal -->
+                            <p style="margin: 0 0 24px 0; color: #475569; font-size: 16px; line-height: 1.6;">
+                                Bienvenido/a a <strong style="color: #0F7C3E;">Reuse</strong>, la sistema de intercambio sostenible de la PUCE.
+                            </p>
+
+                            <p style="margin: 0 0 32px 0; color: #475569; font-size: 16px; line-height: 1.6;">
+                                Para comenzar a reutilizar objetos y formar parte de nuestra comunidad, necesitamos verificar tu dirección de correo electrónico institucional.
+                            </p>
+
+                            <!-- Botón CTA -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td align="center" style="padding: 0 0 32px 0;">
+                                        <a href="{{ verification_url }}"
+                                           target="_blank"
+                                           style="display: inline-block; padding: 16px 40px; background-color: #0F7C3E; color: #FFFFFF; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: 600; box-shadow: 0 4px 6px rgba(15, 124, 62, 0.25); transition: background-color 0.2s;">
+                                            ✓ Verificar mi correo
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Link Alternativo -->
+                            <div style="padding: 20px; background-color: #F8FAFC; border-radius: 8px; border-left: 4px solid #0F7C3E; margin-bottom: 24px;">
+                                <p style="margin: 0 0 8px 0; color: #0F172A; font-size: 14px; font-weight: 600;">
+                                    ¿El botón no funciona?
+                                </p>
+                                <p style="margin: 0; color: #475569; font-size: 13px; line-height: 1.5;">
+                                    Copia y pega este enlace en tu navegador:
+                                </p>
+                                <p style="margin: 8px 0 0 0; word-break: break-all;">
+                                    <a href="{{ verification_url }}"
+                                       style="color: #0F7C3E; font-size: 13px; text-decoration: underline;">
+                                        {{ verification_url }}
+                                    </a>
+                                </p>
+                            </div>
+
+                            <!-- Información Adicional -->
+                            <div style="padding: 20px; background-color: #FEF3C7; border-radius: 8px; border-left: 4px solid #F59E0B; margin-bottom: 24px;">
+                                <p style="margin: 0 0 4px 0; color: #78350F; font-size: 14px; font-weight: 600;">
+                                    ⚠️ Importante
+                                </p>
+                                <p style="margin: 0; color: #78350F; font-size: 13px; line-height: 1.5;">
+                                    Este enlace expirará en <strong>24 horas</strong>. Si no solicitaste esta verificación, puedes ignorar este mensaje.
+                                </p>
+                            </div>
+
+                            <!-- Beneficios -->
+                            <h3 style="margin: 32px 0 16px 0; color: #0F172A; font-size: 18px; font-weight: 600;">
+                                ¿Qué puedes hacer en Reuse?
+                            </h3>
+
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td style="padding: 12px 0;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <div style="width: 32px; height: 32px; background-color: #D9F99D; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                                        <span style="font-size: 18px;">📚</span>
+                                                    </div>
+                                                </td>
+                                                <td style="vertical-align: top;">
+                                                    <p style="margin: 0; color: #0F172A; font-size: 15px; font-weight: 600;">
+                                                        Intercambiar libros y materiales
+                                                    </p>
+                                                    <p style="margin: 4px 0 0 0; color: #64748B; font-size: 14px; line-height: 1.5;">
+                                                        Dale una segunda vida a tus apuntes y libros académicos
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding: 12px 0;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <div style="width: 32px; height: 32px; background-color: #D9F99D; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                                        <span style="font-size: 18px;">🏆</span>
+                                                    </div>
+                                                </td>
+                                                <td style="vertical-align: top;">
+                                                    <p style="margin: 0; color: #0F172A; font-size: 15px; font-weight: 600;">
+                                                        Ganar puntos e insignias
+                                                    </p>
+                                                    <p style="margin: 4px 0 0 0; color: #64748B; font-size: 14px; line-height: 1.5;">
+                                                        Participa en retos y sube en el ranking de tu facultad
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding: 12px 0;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <div style="width: 32px; height: 32px; background-color: #D9F99D; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                                        <span style="font-size: 18px;">🌱</span>
+                                                    </div>
+                                                </td>
+                                                <td style="vertical-align: top;">
+                                                    <p style="margin: 0; color: #0F172A; font-size: 15px; font-weight: 600;">
+                                                        Contribuir al medio ambiente
+                                                    </p>
+                                                    <p style="margin: 4px 0 0 0; color: #64748B; font-size: 14px; line-height: 1.5;">
+                                                        Reduce residuos y promueve la economía circular en la PUCE
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 32px 40px; background-color: #F8FAFC; border-top: 1px solid #E5E7EB;">
+                            <!-- Texto Footer -->
+                            <p style="margin: 0 0 8px 0; text-align: center; color: #64748B; font-size: 13px; line-height: 1.5;">
+                                Este correo fue enviado a <strong>{{ to_email }}</strong>
+                            </p>
+
+                            <p style="margin: 0; text-align: center; color: #94A3B8; font-size: 12px; line-height: 1.5;">
+                                © 2026 Reuse PUCE. Sistema de Intercambio Sostenible<br>
+                                Pontificia Universidad Católica del Ecuador
+                            </p>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+                <!-- Mensaje Anti-Spam -->
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin-top: 24px;">
+                    <tr>
+                        <td align="center">
+                            <p style="margin: 0; color: #94A3B8; font-size: 12px; line-height: 1.5;">
+                                Si no creaste una cuenta en Reuse, puedes ignorar este correo de forma segura.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

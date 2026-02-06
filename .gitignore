@@ -1,0 +1,137 @@
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ==========================================
+# Environment Variables (IMPORTANTE)
+# ==========================================
+# Archivos con credenciales reales (NO subir)
+.env
+.venv
+.env.local
+.env.*.local
+
+# NOTA: .env.example es la plantilla (SI está en Git)
+# Copiar a .env y configurar valores reales
+
+# ==========================================
+# IDEs y Editores
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.claude/
+
+# ==========================================
+# Base de Datos
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# Archivos Subidos (Runtime)
+# ==========================================
+uploads/*
+!uploads/.gitkeep
+static/uploads/
+
+# ==========================================
+# Logs
+# ==========================================
+*.log
+logs/
+*.log.*
+
+# ==========================================
+# Sistema Operativo
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Testing y Coverage
+# ==========================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# ==========================================
+# Docker (desarrollo local)
+# ==========================================
+# NO ignorar Dockerfile, docker-compose.yml, .dockerignore
+# Estos son necesarios para Dokploy
+*.docker-compose.override.yml
+
+# ==========================================
+# Documentación Innecesaria
+# ==========================================
+# Solo README.md se mantiene en el repo
+DEPLOYMENT.md
+DOCKER.md
+CHANGELOG_DB.md
+UPLOAD_IMAGES_README.md
+docs/
+
+# ==========================================
+# Scripts
+# ==========================================
+# NOTA: scripts/init_db.sql es necesario para Docker
+
+# ==========================================
+# Alembic (Migrations)
+# ==========================================
+alembic/versions/*.pyc
+alembic.ini
+
+# ==========================================
+# Backups y Temporales
+# ==========================================
+*.bak
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+backup/
+tmp/
+temp/

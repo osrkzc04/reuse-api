@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - Reuse{% endblock %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+
+<div style="margin: 25px 0;">
+    {{ content | safe }}
+</div>
+
+{% if cta_text and cta_url %}
+<p style="text-align: center; margin: 30px 0;">
+    <a href="{{ cta_url }}" class="btn">{{ cta_text }}</a>
+</p>
+{% endif %}
+
+<hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+
+<p style="color: #888; font-size: 13px;">
+    Recibes este correo porque estas suscrito a las noticias de Reuse.
+</p>
+{% endblock %}
