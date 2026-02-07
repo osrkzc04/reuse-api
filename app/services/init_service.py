@@ -6,6 +6,7 @@ import sys
 import time
 from sqlalchemy.orm import Session
 from sqlalchemy import text
+from sqlalchemy.exc import IntegrityError
 from app.config import get_settings
 from app.db.session import SessionLocal
 from app.models.user import User
@@ -51,6 +52,7 @@ def init_admin_user() -> bool:
     Crear usuario administrador inicial si no existe.
 
     Usa las variables de entorno ADMIN_EMAIL y ADMIN_PASSWORD.
+    Maneja condiciones de carrera con múltiples workers.
 
     Returns:
         True si se creó el usuario, False si ya existía o hubo error
@@ -71,12 +73,21 @@ def init_admin_user() -> bool:
     db: Session = SessionLocal()
 
     try:
-        # Verificar si el admin ya existe
+        # Verificar si el admin ya existe (incluyendo soft-deleted)
         existing_admin = db.query(User).filter(
             User.email == settings.ADMIN_EMAIL
         ).first()
 
         if existing_admin:
+            # Si existe pero esta soft-deleted, restaurarlo
+            if existing_admin.deleted_at is not None:
+                existing_admin.deleted_at = None
+                existing_admin.status = "active"
+                existing_admin.role = "administrador"
+                db.commit()
+                log(f"✅ Usuario administrador restaurado: {settings.ADMIN_EMAIL}")
+                return True
+
             log(f"✅ Usuario administrador ya existe: {settings.ADMIN_EMAIL}")
             return False
 
@@ -98,11 +109,15 @@ def init_admin_user() -> bool:
 
         return True
 
+    except IntegrityError:
+        # Otro worker ya creó el usuario (condición de carrera)
+        db.rollback()
+        log(f"✅ Usuario administrador ya existe (creado por otro proceso): {settings.ADMIN_EMAIL}")
+        return False
+
     except Exception as e:
         db.rollback()
         log(f"❌ Error al crear usuario administrador: {e}")
-        import traceback
-        traceback.print_exc()
         return False
 
     finally:
